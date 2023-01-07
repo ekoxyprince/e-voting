@@ -1,0 +1,52 @@
+<%-include("../partials/adminheader")%>
+<div class="main-content">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="card">
+            <div class="boxs mail_listing">
+                <div class="inbox-center table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="1">
+                                    <div class="inbox-header">
+                                     Add New Station
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="composeForm" action="/admin/add_stations" method="post">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="location" id="email_address" class="form-control" placeholder="Station Location" value="" required>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="form-line">
+                                  <select name="official" id="" class="form-control" required>
+                                    <option value="">Select An Official</option>
+                                    <%stations.forEach((station)=>{%>
+                                        <option value="<%=station.oid%>"><%=station.official_name%></option>
+                                    <%})%>
+                                </select>
+                                </div>
+                            </div>
+                          
+                            <div class="col-lg-12 mt-3">
+                                <div class="m-l-25 m-b-20">
+                                    <button type="submit" class="btn btn-info btn-border-radius waves-effect">Send</button>
+                                    <button type="reset" class="btn btn-danger btn-border-radius waves-effect">Discard</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-include("../partials/adminfooter")%>

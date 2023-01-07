@@ -1,0 +1,42 @@
+<%-include("../partials/voterheader")%>
+<div class="container rounded bg-dark mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="<%=user.passport%>"><span class="font-weight-bold"><%=user.username%></span><span class="text-black-50"><%=user.email%></span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <form action="/voter/profile" method="post" enctype="multipart/form-data">
+                <div class="row mt-2">
+                    <div class="col-md-12"><label class="labels">Fullname</label><input type="text" class="form-control" name="name" placeholder="full name" value="<%=user.username%>" required readonly></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" name="phone" placeholder="enter phone number" value="<%=user.phone%>" required></div>
+                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" name="state" placeholder="enter your state" value="<%=user.state%>" required></div>
+                    <div class="col-md-12"><label class="labels">Local Government</label><input type="text" class="form-control" name="lga" placeholder="enter local government" value="<%=user.lga%>" required></div>
+                   
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Marital Status</label><select name="marital" class="form-control" id=""><option value="<%=user.marital%>" selected>Choose a Status</option><option value="single">single</option> <option value="married">Married</option></select></div>
+                    <div class="col-md-6"><label class="labels">Gender</label><select name="gender" class="form-control" id=""><option value="<%=user.gender%>" selected>please select a gender</option><option value="male">Male</option> <option value="female">Female</option></select></div>
+                </div>
+                <div class="mt-5 text-center"><button type="submit" class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-5">
+            <div class="col-md-12"><label class="labels">Job</label><input type="text" class="form-control" name="job" placeholder="Which Job Do you do" value="<%=user.job%>" required></div>
+            <div class="col-md-12"><label class="labels">Voter No</label><input name="voterno" type="text" class="form-control" name="state" placeholder="enter your voter's no" value="<%=user.voterno%>" required readonly></div>
+            <div class="col-md-12"><label class="labels">Email address</label><input type="text" class="form-control" name="email" placeholder="enter email address" value="<%=user.email%>" required></div>
+            <div class="col-md-12"><label class="labels">Date of birth</label><input name="dob" type="date" class="form-control" name="dob" placeholder="enter your date of birth" value="<%=user.dob%>" required></div>
+            <div class="col-md-12"><label class="labels">Passport</label><br> <input class="form-control-file " name="fileToUpload" type="file" accept="image/*" required></div>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>
+
+<%-include("../partials/voterfooter")%>

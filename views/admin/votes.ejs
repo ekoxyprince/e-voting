@@ -1,0 +1,59 @@
+<%-include("../partials/adminheader")%>
+
+        <section>
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>View votes</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-md">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Candidate</th>
+                                                <th>Party</th>
+                                                <th>Type</th>
+                                                <th>Station</th>
+                                                <th>Voter</th>
+                                                <th>Voter ID</th>
+                                            </tr>
+                                            <% let sum = 0 %>
+                                            <% if (votes.length>0) { %>
+                                                <% votes.forEach(votes => { %>
+                                                    <%sum ++ %>
+                                                    <tr>
+                                                        <td><%=sum%></td>
+                                                        <td>
+                                                            <%= votes.candidate %>
+                                                        </td>
+                                                        <td>
+                                                            <%= votes.party %>
+                                                        </td>
+                                                        <td>
+                                                            <%= votes.type %>
+                                                        </td>
+                                                        <td>
+                                                            <%= votes.station %>
+                                                        </td>
+                                                        <td>
+                                                            <%= votes.username %>
+                                                        </td>
+                                                        <td>
+                                                            <%= votes.voterno %>
+                                                        </td>
+                                                    </tr>
+                                                    <% }) %>
+                                                        <% } %>
+
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+            </section>
+
+<%-include("../partials/adminfooter")%>

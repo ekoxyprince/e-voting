@@ -1,0 +1,70 @@
+<%-include("../partials/adminheader")%>
+<section>
+    <div class="main-content">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>View Voters</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-md">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Full Name</th>
+                                    <th>Gender</th>
+                                    <th>DOB</th>
+                                    <th>LGA</th>
+                                    <th>State</th>
+                                    <th>Phone</th>
+                                    <th>Marital Status</th>
+                                    <th>Email</th>
+                                    <th>Voter's ID</th>
+                                </tr>
+                                <% let sum = 0 %>
+                                <% if (voters.length>0) { %>
+                                    <% voters.forEach(voter => { %>
+                                        <%sum ++ %>
+                                        <tr>
+                                            <td><%=sum%></td>
+                                            <td>
+                                                <%= voter.username %>
+                                            </td>
+                                            <td>
+                                                <%= voter.gender %>
+                                            </td>
+                                            <td>
+                                                <%= voter.dob %>
+                                            </td>
+                                            <td>
+                                                <%= voter.lga %>
+                                            </td>
+                                            <td>
+                                                <%= voter.state %>
+                                            </td>
+                                            <td>
+                                                <%= voter.phone %>
+                                            </td>
+                                            <td>
+                                                <%= voter.maritalstatus %>
+                                            </td>
+                                            <td>
+                                                <%= voter.email %>
+                                            </td>
+                                            <td>
+                                                <%= voter.voterno %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } %>
+
+
+
+
+                            </table>
+                        </div>
+                    </div>
+</section>
+
+<%-include("../partials/adminfooter")%>

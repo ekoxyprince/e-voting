@@ -1,0 +1,163 @@
+<%-include("../partials/officialheader")%>
+
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Presidential Election</h6>
+                                
+                            </div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">State Election</h6>
+                                
+                            </div>
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sales Chart End -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-md">
+                        <tr>
+                            <th>#</th>
+                            <th>Candidate</th>
+                            <th>Party</th>
+                            <th>Type</th>
+                            <th>Station</th>
+                            <th>Voter</th>
+                            <th>Voter ID</th>
+                        </tr>
+                        <% let sum = 0 %>
+                        <% if (votes.length>0) { %>
+                            <% votes.forEach(votes => { %>
+                                <%sum ++ %>
+                                <tr>
+                                    <td><%=sum%></td>
+                                    <td>
+                                        <%= votes.candidate %>
+                                    </td>
+                                    <td>
+                                        <%= votes.party %>
+                                    </td>
+                                    <td>
+                                        <%= votes.type %>
+                                    </td>
+                                    <td>
+                                        <%= votes.station %>
+                                    </td>
+                                    <td>
+                                        <%= votes.username %>
+                                    </td>
+                                    <td>
+                                        <%= votes.voterno %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                                    <% } %>
+
+
+
+
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-dark">View Elections</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-md">
+                            <tr>
+                                <th>#</th>
+                                <th>Election Type</th>
+                                <th>Status</th>
+                                <th>Start</th>
+                                <th>Stop</th>
+                                <th>Party</th>
+                            </tr>
+                            <% let sum1 = 0 %>
+                            <% if (elections.length>0) { %>
+                                <% elections.forEach(election => { %>
+                                    <%sum1 ++ %>
+                                    <tr>
+                                        <td><%=sum1%></td>
+                                        <td>
+                                            <%= election.election_type %>
+                                        </td>
+                                        <td>
+                                            <%= election.status %>
+                                        </td>
+                                        <td>
+                                            <%= election.start %>
+                                        </td>
+                                        <td>
+                                            <%= election.stop %>
+                                        </td>
+                                        <td>
+                                            <%= election.party %>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              
+              <script>
+                const ctx = document.getElementById('myChart');
+                const ctx2 = document.getElementById('myChart2')
+              
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['APC', 'PDP', 'LP', 'APGA', 'YNPP'],
+                    datasets: [{
+                      label: '# of Votes',
+                      data: [<%=APC%>, <%=PDP%>, <%=LP%>, <%=APGA%>, <%=YNPP%>],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+                new Chart(ctx2, {
+                  type: 'bar',
+                  data: {
+                    labels: ['APC', 'PDP', 'LP', 'APGA', 'YNPP'],
+                    datasets: [{
+                      label: '# of Votes',
+                      data: [<%=SAPC%>, <%=SPDP%>, <%=SLP%>, <%=SAPGA%>, <%=SYNPP%>],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              </script>
+<%-include("../partials/officialfooter")%>
